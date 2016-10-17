@@ -1,0 +1,24 @@
+.row{
+    display: inline;
+}
+
+.panel{
+    border: outset 1px;
+    width: 75%;
+}
+
+#aboutlist {
+    font-family: "Helvetica neue", Helvetica, Arial, Sans-serif;
+    font-size: large;
+}
+
+#ulabel{
+    font-family: "Helvetica neue", Helvetica, Arial, Sans-serif;
+    font-size: large;
+}
+
+
+#describe{
+    font-family: "Helvetica neue", Helvetica, Arial, Sans-serif;
+    font-weight: bold;
+}

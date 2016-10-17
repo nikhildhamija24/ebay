@@ -1,0 +1,32 @@
+ .row{
+     display: inline;
+ }
+
+ .panel{
+     border: outset 1px;
+     width: 75%;
+ }
+ #describe{
+     font-family: "Helvetica neue", Helvetica, Arial, Sans-serif;
+     font-weight: bold;
+ }
+
+ .btn{
+     width: 50%;
+ }
+
+ #btnlabel{
+     font-family: "Helvetica neue", Helvetica, Arial, Sans-serif;
+     font-weight: normal;
+     font-size: small;
+ }
+
+ #basedisc{
+     font-family: "Helvetica neue", Helvetica, Arial, Sans-serif;
+     font-weight: normal;
+     font-size: 10px;
+ }
+
+ .control-label{
+     font-size: large;
+ }

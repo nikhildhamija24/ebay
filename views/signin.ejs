@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="registerApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="angular/registerPage.js"></script>
+    <title>Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay</title>
+</head>
+<body>
+<div id="nameId" class="row">
+    <h1 align="center"><a href="/"><img role="presentation" id="ebayimg" width=180 height=80 alt="eBay" src="https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png"></a></h1>
+</div>
+
+<div ng-controller="registerController" id="containerId" class="container col-md-offset-4 col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading btn-group btn-group-justified">
+            <ul class="nav nav-tabs nav-justified">
+                <li id="btn1"><a ng-click="signInClicked()" href="/signinPage">Sign in</a></li>
+                <li id="btn2"><a ng-click="registerClicked()" href="/register">Register</a></li>
+            </ul>
+
+        </div>
+        <br>
+        <div class="panel-body">
+            <div ng-show="signInFlag" class="form-group">
+
+                <form action="/signinPage" method="post">
+                    <label for="userEmail" class="sr-only">Email or username</label>
+                    <input type="email" name="userEmail" ng-model="userEmail" class="form-control" placeholder="Email or username" required="required" autofocus="autofocus"/>
+                    <br>
+                    <label for="userPassword" class="sr-only">Password</label>
+                    <input type="password" name="userPassword" ng-model="userPassword" class="form-control" placeholder="Password" required="required"/>
+
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+
+                </form>
+            </div>
+
+
+            <div ng-hide="signInFlag" class="form-group">
+                <form action="/register" method="post">
+
+                    <label for="fname" class="sr-only">First name</label>
+                    <input type="text" name="fname" id="fname" class="form-control" placeholder="First name" required="required"/>
+                    <br>
+                    <label for="lname" class="sr-only">Last name</label>
+                    <input type="text" name="lname" id="lname" class="form-control" placeholder="Last name" required="required"/>
+                    <br>
+
+                    <label for="registerEmail" class="sr-only">Email</label>
+                    <input type="email" name="registeremail" id="registerEmail" class="form-control" placeholder="Email" required="required"/>
+                    <br>
+
+                    <label for="registerPassword" class="sr-only">Password</label>
+                    <input type="password" name="pass" id="registerPassword" class="form-control" placeholder="Password" required="required"/>
+                    <br>
+
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <table align="center">
+            <tr>
+                <td style="padding-top: 15px">Copyright © 1995-2016 eBay Inc. All Rights Reserved. <a href="#" style="color: black">Home</a> </td>
+            </tr>
+        </table>
+    </div>
+</nav>
+</body>
+</html>

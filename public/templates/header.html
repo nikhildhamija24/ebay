@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="col-md-6">
+        <ul>
+            <li ng-hide="nameFlag">Hi! <a href="/signinPage" id="nav-span">Sign in</a> or <a href="/register" id="nav-span">register</a> </li>
+            <li ng-show="nameFlag">Hi! {{ user }} </li>
+            <li> | </li>
+            <li> Daily Deals </li>
+            <li> | </li>
+            <li> Gift Cards </li>
+            <li> | </li>
+            <li> Sell </li>
+            <li> | </li>
+            <li> Help & Contact </li>
+        </ul>
+    </div>
+    <div class="col-md-offset-4 col-md-2">
+        <ul>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">My eBay
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </li>
+            <li class="fa fa-shopping-cart"></li>
+        </ul>
+    </div>
+</nav>

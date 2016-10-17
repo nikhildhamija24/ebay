@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="fetchdata">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay</title>
+    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/userhome.css' />
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="angular/userHome.js"></script>
+</head>
+<body ng-controller="userController">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="col-md-6">
+        <ul>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black">Hi! {{ user }}
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </li>
+            <li> | </li>
+            <li><a href="/allProds" style="color: black"> Buy </a></li>
+            <li> | </li>
+            <li><a href="/product" style="color: black"> Sell </a></li>
+
+        </ul>
+    </div>
+    <div class="col-md-offset-3 col-md-3">
+        <ul>
+            <li>
+                <a href="/userHome" style="color: black">My eBay
+                    <span class="fa fa-user"></span></a>
+            </li>
+            <li class="fa fa-shopping-cart"><a href="/cartPage" style="color: black">Shopping Cart</a> </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-sm-1 col-md-1 col-lg-1">
+        <h1 id="imgh"><a href="/"><img role="presentation" id="ebayimg" width=100 height=50 alt="eBay" src="https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png"></a></h1>
+        <!--http://ir.ebaystatic.com/rs/v/fxxj3ttftm5ltcqnto1o4baovyl.png-->
+    </div>
+</div>
+
+<div class="row">
+  <div class="container-fluid">
+    <div class="panel-group">
+      <div class="panel panel-default" ng-hide="editform">
+          <div class="panel-heading"><h2 id="describe">About</h2></div>
+          <div class="panel-body">
+              <div class="row">
+                  <div class="col-md-8">
+                      <div class="row">
+                          <div class="col-md-3">
+                              <label id="ulabel" for="userbday"> Birthday </label>
+                          </div>
+                          <div class="col-md-offset-1 col-md-5">
+                              {{userbday}}
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-3">
+                              <label id="ulabel" for="ebayhandle"> Ebay handle </label>
+                          </div>
+                          <div class="col-md-offset-1 col-md-5">
+                              {{ebayhandle}}
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-3">
+                              <label id="ulabel" for="location"> Location </label>
+                          </div>
+                          <div class="col-md-offset-1 col-md-5">
+                              {{location}}
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-3">
+                              <label id="ulabel" for="contact"> Contact </label>
+                          </div>
+                          <div class="col-md-offset-1 col-md-5">
+                              {{contact}}
+                          </div>
+                      </div>
+
+
+                  </div>
+                  <div class="col-md-offset-2 col-md-1">
+                      <button class="btn btn-default" ng-click="editInfo()">Edit</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- edit form -->
+        <div class="panel panel-default" ng-show="editform">
+            <div class="panel-heading"><h2 id="describe">About</h2></div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <form action="" method="post">
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-1">
+                                <label id="ulabel" for="userbday"> Birthday </label>
+                            </div>
+                            <div class="col-md-offset-1 col-md-6">
+                                <input type="datetime" ng-model="userbday" id="ed" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-1">
+                                <label id="ulabel" for="ebayhandle"> Ebay handle </label>
+                            </div>
+                            <div class="col-md-offset-1 col-md-6">
+                                <input type="text" ng-model="ebayhandle" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-1">
+                                <label id="ulabel" for="location"> Location </label>
+                            </div>
+                            <div class="col-md-offset-1 col-md-6">
+                                <input type="text" ng-model="location" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-1">
+                                <label id="ulabel" for="contact"> Contact </label>
+                            </div>
+                            <div class="col-md-offset-1 col-md-6">
+                                <input type="number" ng-model="contact" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-offset-6 col-md-4">
+                                <button type="submit" class="form-control btn btn-primary" ng-click="userUpdate();"> Update </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+      <div class="panel panel-default">
+          <div class="panel-heading"><h2 id="describe">My Collections</h2></div>
+            <div class="panel-body">
+              <div class="row">
+                  <div class="col-md-4 thumbnail" ng-repeat="prod in historyArr" style="padding: 1em 1em">
+                      <div class="caption">
+                          <h3>{{prod.itemName}}</h3>
+                          <p class="description"><ul>
+                              <li>{{prod.itemDescription}}</li>
+                              <li>{{prod.quantity}}</li>
+                          </ul></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><h2 id="describe">Items sold</h2></div>
+          <div class="panel-body">
+              <div class="row">
+                  <div class="col-md-4 thumbnail" ng-repeat="obj in productArr" style="padding: 1em 1em">
+                      <div class="caption">
+                          <h3>{{obj.itemName}}</h3>
+                          <p class="description"><ul>
+                              <li>{{obj.itemDescription}}</li>
+                              <li>{{obj.itemQuantity}}</li>
+                          </ul></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container" style="padding-top: 15px">
+        <table align="center">
+            <tr>
+                <td style="padding-top: 15px">Copyright © 1995-2016 eBay Inc. All Rights Reserved. <a href="#" style="color: black">Home</a> </td>
+            </tr>
+        </table>
+    </div>
+</nav>
+
+</body>
+</html>

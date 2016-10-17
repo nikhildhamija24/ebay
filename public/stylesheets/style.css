@@ -1,0 +1,83 @@
+body {
+  padding : 35px 40px 40px 40px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url(https://securepics.ebaystatic.com/aw/pics/cmp/ds3/imgbg.jpg) repeat 0 0 #f8f8f8 ;
+  font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+  font-size: 14px;
+  line-height: 1;
+}
+.navbar{
+}
+
+.row{
+  margin-top: 30px;
+}
+
+.carousel-inner{
+  line-height: 50%;
+}
+
+.item{
+  width: 70%;
+  height: 40%;
+}
+
+.thumbnail .description{
+  color: #000;
+}
+.prices{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#imgh{
+  margin-top: 0px;
+}
+
+#homebtn{
+
+}
+
+#searchinp{
+  padding: 10px 10px;
+  width: 100%;
+  line-height: 1px;
+}
+
+#searchbtn{
+  width: 150px;
+  text-align: center;
+  font-size: large;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.navbar li{
+  display: inline;
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+.navbar ul{
+  margin-top: 25px;
+}
+
+.navbar .fa-shopping-cart{
+  font-size: 14px;
+}
+
+#containerId{
+  padding: 30px 0px 0px 10px;
+}
+.control-label{
+  font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+  font-size: 14px;
+}
+
+.panel-group{
+  padding: 80px 20px;
+}
+
+

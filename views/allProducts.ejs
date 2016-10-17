@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="productApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay</title>
+    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="angular/product.js"></script>
+</head>
+<body ng-controller="allProductController">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="col-md-6">
+        <ul>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black">Hi! {{ user }}
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </li>
+
+            <li> | </li>
+            <li><a href="/allProds" style="color: black"> Buy </a></li>
+            <li> | </li>
+            <li><a href="/product" style="color: black"> Sell </a></li>
+
+        </ul>
+    </div>
+    <div class="col-md-offset-3 col-md-3">
+        <ul>
+            <li>
+                <a href="/userHome" style="color: black">My eBay
+                    <span class="fa fa-user"></span></a>
+            </li>
+            <li class="fa fa-shopping-cart"><a href="/cartPage" style="color: black">Shopping Cart</a> </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-1 col-lg-1">
+            <h1 id="imgh"><a href="/"><img role="presentation" id="ebayimg" width=100 height=50 alt="eBay" src="https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png" class="image-responsive"></a></h1>
+            <!--http://ir.ebaystatic.com/rs/v/fxxj3ttftm5ltcqnto1o4baovyl.png-->
+        </div>
+        <form class="form-group">
+            <div class="col-md-6 col-lg-6">
+                <input type="text" class="form-control" id="searchinp" ng-model="searchbox"/>
+            </div>
+            <div class="col-md-4 col-lg-4" id="homebtn">
+                <button type="button" class="btn btn-primary form-control" ng-click="showsearch();" id="searchbtn">Search <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="container" ng-show="search">
+        <div class="row">
+
+            <div class="col-md-4 thumbnail" ng-repeat="prod in searchProductArr"  style="padding: 1em 1em">
+                <form action="/addToCart" method="post">
+                    <div class="caption">
+                        <h2>{{prod.itemName}}</h2>
+                        <h4>Sold By {{prod.sellerName}}</h4>
+                        <p class="description"><ul>
+                            <li>{{prod.itemDescription}}</li>
+                            <li>Price: ${{prod.itemPrice}}</li>
+                        </ul></p>
+                        <input type="number" name="productId" style="display: none" value={{prod.productId}} readonly/>
+                        <div class="clearfix">
+                            Quantity: <select name="selectedQuantity" ng-model="selectedValue" ng-options="n for n in [] | range:1:prod.itemQuantity"></select>
+                            <button class="btn btn-success pull-right" role="submit">Add to Cart</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container" ng-hide="search">
+        <div class="row">
+
+                <div class="col-md-4 thumbnail" ng-repeat="prod in productArr"  style="padding: 1em 1em">
+                    <form ng-hide="prod.bidding" action="/addToCart" method="post">
+                        <div class="caption">
+                            <h2>{{prod.itemName}}</h2>
+                            <h4>Sold By {{prod.sellerName}}</h4>
+                            <p class="description"><ul>
+                                <li>{{prod.itemDescription}}</li>
+                                <li>Price: ${{prod.itemPrice}}</li>
+                            </ul></p>
+                            <input type="number" name="productId" style="display: none" value={{prod.productId}} readonly/>
+                            <div class="clearfix">
+                                Quantity: <select name="selectedQuantity" ng-model="selectedValue" ng-options="n for n in [] | range:1:prod.itemQuantity"></select>
+                                <button class="btn btn-success pull-right" role="submit">Add to Cart</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <form ng-show="prod.bidding" action="/addToBidCart" method="post">
+                        <div class="caption">
+                            <h2>{{prod.itemName}}</h2>
+                            <h4>Sold By {{prod.sellerName}}</h4>
+                            <p class="description"><ul>
+                                <li>{{prod.itemDescription}}</li>
+                            </ul></p>
+                            <input type="number" name="productId" style="display: none" value={{prod.productId}} readonly/>
+                            <div class="clearfix">
+                                Minimum Bid: $ <textarea name="itemPrice" rows="1" readonly="readonly">{{prod.itemPrice}}</textarea><br>
+                                Enter your bid $ <input type="number" name="userBid"/> /per item <br>
+                                Select Quantity: <select name="selectedQuantity" ng-model="selectedValue" ng-options="n for n in [] | range:1:prod.itemQuantity"></select>
+                                <button class="btn btn-success pull-right" role="submit">Start Bid</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container" style="padding-top: 15px">
+        <table align="center">
+            <tr>
+                <td style="padding-top: 15px">Copyright © 1995-2016 eBay Inc. All Rights Reserved. <a href="/" style="color: black">Home</a> </td>
+            </tr>
+        </table>
+    </div>
+</nav>
+</body>
+</html>

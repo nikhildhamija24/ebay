@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="productApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay</title>
+    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/product.css' />
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="angular/product.js"></script>
+</head>
+
+<body ng-controller="productController">
+    <div class="row">
+        <div class="col-md-1">
+            <h1 id="imgh"><a href="/"><img role="presentation" id="ebayimg" width=100 height=50 alt="eBay" src="https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png" class="image-responsive"></a></h1>
+            <!--http://ir.ebaystatic.com/rs/v/fxxj3ttftm5ltcqnto1o4baovyl.png-->
+        </div>
+    </div>
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 id="describe">Describe your item</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="title" class="control-label">Title</label>
+                        </div>
+                        <div class="col-md-offset-1 col-md-9">
+                            <input type="text" ng-model="title" name="title" class="form-control" required="required" autofocus="autofocus"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="description" class="control-label">Description</label>
+                        </div>
+                        <div class="col-md-offset-1 col-md-9">
+                            <textarea ng-model="description" name="description" class="form-control" rows="4" required="required"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="quantity" class="control-label">Quantity</label>
+                        </div>
+                        <div class="col-md-offset-1 col-md-9">
+                            <input type="number" ng-model="quantity" name="quantity" class="form-control" required="required" autofocus="autofocus"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 id="describe">Select format and price</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="listformat" class="control-label">Listing format</label>
+                        </div>
+                        <div class="col-md-offset-1 col-md-9">
+                            <div class="row">
+
+                                <div class="col-md-5">
+                                    <label id="btnlabel">Bidding is best when you're not sure how much your item could sell for.</label>
+                                    <input type="radio" class="" ng-model="bidding" value="true"/>Bidding
+                                </div>
+                                <div class="col-md-offset-2 col-md-5">
+                                    <label id="btnlabel">Fixed price is best when you know how much you want to get. </label>
+                                    <input type="radio" class="" ng-model="bidding" value="false"/>Fixed Price
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="price" class="control-label">Price</label>
+                        </div>
+                        <div class="col-md-offset-1 col-md-9">
+                            <input type="number" ng-model="price" name="price" class="form-control" required="required" autofocus="autofocus"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <p id="basedisc">
+                indicates required fields</p>
+            <p id="basedisc">
+                If your item sells, we'll charge you a fee that's a percentage of the total amount the buyer pays you.</p>
+            <p id="basedisc">
+            Your listing may not be immediately searchable (up to 24 hours in some circumstances), so eBay can't guarantee exact listing durations. Learn more about finding items you listed for sale - opens in a new window or tab</p>
+            <p id="basedisc">
+            Funds from your sales will be unavailable and show as pending in your PayPal account for a period of time. Learn more about pending PayPal payments - opens in a new window or tab</p>
+            <p id="basedisc">
+            By clicking the List it button, you agree to pay the fees above, accept the listing conditions above, and assume full responsibility for the content of the listing and item offered
+            </p>
+
+            <div class="row">
+                <div class="col-md-offset-7 col-md-4">
+                    <button type="submit" ng-click="submitData();" class="btn btn-primary" id="submitbtn">List it</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+
+
+
+
+
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <table align="center">
+                <tr>
+                    <td style="padding-top: 15px">Copyright © 1995-2016 eBay Inc. All Rights Reserved. <a href="#" style="color: black">Home</a> </td>
+                </tr>
+            </table>
+        </div>
+    </nav>
+
+</body>
+
+</html>
